@@ -1,84 +1,82 @@
-# OkHttpUtils
-æœ€ç®€å•çš„okhttpå°è£…ï¼ŒCallBackæ–¹æ³•æ‰§è¡Œåœ¨UIçº¿ç¨‹ã€‚æ”¯æŒgetè¯·æ±‚ï¼Œpostè¯·æ±‚ï¼Œæ”¯æŒæ–‡ä»¶ä¸Šä¼ å’Œä¸‹è½½ã€‚
+# UrlHttpUtils
+×î¼òµ¥µÄUrlHttpUtils·â×°£¬CallBack·½·¨Ö´ĞĞÔÚUIÏß³Ì¡£Ö§³ÖgetÇëÇó£¬postÇëÇó£¬Ö§³ÖÎÄ¼şÉÏ´«ºÍÏÂÔØ¡£
 
-## ä½¿ç”¨æ–¹æ³•ï¼š
-ä»£ç å¾ˆç®€å•ï¼Œåªæœ‰ä¸‰ä¸ªJavaæ–‡ä»¶ï¼Œå»ºè®®ä¸‹è½½åå°†Javaæ–‡ä»¶æ‹·è´åˆ°å·¥ç¨‹ä¸­ä½¿ç”¨ã€‚
+## Ê¹ÓÃ·½·¨£º
+´úÂëºÜ¼òµ¥£¬Ö»ÓĞÁù¸öJavaÎÄ¼ş£¬½¨ÒéÏÂÔØºó½«JavaÎÄ¼ş¿½±´µ½¹¤³ÌÖĞÊ¹ÓÃ¡£
 
-## å°è£…çš„åŠŸèƒ½æœ‰ï¼š
-###### ä¸€èˆ¬çš„getè¯·æ±‚
-###### ä¸€èˆ¬çš„postè¯·æ±‚
-###### ä¸Šä¼ å•ä¸ªæ–‡ä»¶(åŒ…å«è¿›åº¦)
-###### ä¸Šä¼ listé›†åˆæ–‡ä»¶
-###### ä¸Šä¼ mapé›†åˆæ–‡ä»¶
-###### æ–‡ä»¶ä¸‹è½½(åŒ…å«è¿›åº¦)
-###### å›¾ç‰‡ä¸‹è½½(å®ç°äº†å›¾ç‰‡çš„å‹ç¼©)
+## ·â×°µÄ¹¦ÄÜÓĞ£º
+###### Ò»°ãµÄgetÇëÇó
+###### Ò»°ãµÄpostÇëÇó
+###### ÉÏ´«µ¥¸öÎÄ¼ş(°üº¬½ø¶È)
+###### ÉÏ´«list¼¯ºÏÎÄ¼ş
+###### ÉÏ´«map¼¯ºÏÎÄ¼ş
+###### ÎÄ¼şÏÂÔØ(°üº¬½ø¶È)
+###### Í¼Æ¬ÏÂÔØ(ÊµÏÖÁËÍ¼Æ¬µÄÑ¹Ëõ)
 
-## ä½¿ç”¨ç¤ºä¾‹
-### GETè¯·æ±‚
-    String url = "https://www.baidu.com/";
-    OkhttpUtil.okHttpGet(url, new CallBackUtil.CallBackString() {
-        @Override
-        public void onFailure(Call call, Exception e) {}
+## Ê¹ÓÃÊ¾Àı
+### GETÇëÇó
+	String url = "https://www.baidu.com/";
+	UrlHttpUtil.get(url, new CallBackUtil.CallBackString() {
+	    @Override
+	    public void onFailure(int code, String errorMessage) {
 
-        @Override
-        public void onResponse(String response) {
-            Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT).show();
-            Log.d("kwwl",response);
-        }
-    });
-### POSTè¯·æ±‚
+	    }
+
+	    @Override
+	    public void onResponse(String response) {
+
+	    }
+	});
+### POSTÇëÇó
     String url = "https://www.baidu.com/";
     HashMap<String, String> paramsMap = new HashMap<>();
     paramsMap.put("title","title");
-    OkhttpUtil.okHttpPost(url, paramsMap, new CallBackUtil.CallBackString() {
+    UrlHttpUtil.post(url, paramsMap, new CallBackUtil.CallBackString() {
         @Override
-        public void onFailure(Call call, Exception e) {
-
+        public void onFailure(int code, String errorMessage) {
+	
         }
 
         @Override
         public void onResponse(String response) {
 
-        }
+       }
     });
 
-### ä¸Šä¼ æ–‡ä»¶
-    File file = new File(Environment.getExternalStorageDirectory()+"/kwwl/abc.jpg");
-    HashMap<String, String> paramsMap = new HashMap<>();
-    paramsMap.put("title","title");
-    OkhttpUtil.okHttpUploadFile(url, file, "image", OkhttpUtil.FILE_TYPE_IMAGE, paramsMap, new CallBackUtil.CallBackString() {
-        @Override
-        public void onFailure(Call call, Exception e) {
+### ÉÏ´«ÎÄ¼ş
+        File file = new File(Environment.getExternalStorageDirectory()+"/kwwl/abc.jpg");
+        HashMap<String, String> paramsMap = new HashMap<>();
+        paramsMap.put("title","title");
 
-        }
+        UrlHttpUtil.uploadFile("url", file,  "image",UrlHttpUtil.FILE_TYPE_FILE, paramsMap, new CallBackUtil.CallBackString() {
+            @Override
+            public void onFailure(int code, String errorMessage) {
 
-        @Override
-        public void onProgress(float progress, long total) {
+            }
 
-        }
+            @Override
+            public void onResponse(String response) {
 
-        @Override
-        public void onResponse(String response) {
+            }
+        });
 
-        }
-    });
+### ÏÂÔØÎÄ¼ş
+        UrlHttpUtil.downloadFile("url", new CallBackUtil.CallBackFile("fileDir","fileName") {
+            @Override
+            public void onFailure(int code, String errorMessage) {
 
-### ä¸‹è½½æ–‡ä»¶
-    OkhttpUtil.okHttpDownloadFile("url", new CallBackUtil.CallBackFile("fileDir","fileName") {
-        @Override
-        public void onFailure(Call call, Exception e) {
+            }
 
-        }
+            @Override
+            public void onProgress(float progress, long total) {
+                super.onProgress(progress, total);
+            }
 
-        @Override
-        public void onProgress(float progress, long total) {
-        }
+            @Override
+            public void onResponse(File response) {
 
-        @Override
-        public void onResponse(File response) {
-
-        }
-    });
+            }
+        });
 
 
 

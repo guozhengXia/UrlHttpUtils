@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/UrlHttpUtils.iml" filepath="$PROJECT_DIR$/UrlHttpUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sampleurlhttp/sampleurlhttp.iml" filepath="$PROJECT_DIR$/sampleurlhttp/sampleurlhttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/urlhttputils/urlhttputils.iml" filepath="$PROJECT_DIR$/urlhttputils/urlhttputils.iml" />
+    </modules>
+  </component>
+</project>
